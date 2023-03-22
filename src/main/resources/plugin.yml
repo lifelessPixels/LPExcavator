@@ -1,0 +1,4 @@
+name: LPExcavator
+main: pl.lifelesspixels.lpexcavator.LPExcavator
+version: 0.1
+api-version: 1.19
