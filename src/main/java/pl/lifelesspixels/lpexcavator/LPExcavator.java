@@ -3,6 +3,7 @@ package pl.lifelesspixels.lpexcavator;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.lifelesspixels.lpexcavator.commands.ExcavatorCommand;
 import pl.lifelesspixels.lpexcavator.data.AxeExcavatorMode;
 import pl.lifelesspixels.lpexcavator.data.ExcavatorPlayerStates;
 import pl.lifelesspixels.lpexcavator.data.PickaxeExcavatorMode;
@@ -10,6 +11,8 @@ import pl.lifelesspixels.lpexcavator.events.BlockEventsListener;
 import pl.lifelesspixels.lpexcavator.events.ItemEventsListener;
 import pl.lifelesspixels.lpexcavator.events.PlayerConnectionEventsListener;
 import pl.lifelesspixels.lpexcavator.utils.BlockFinder;
+
+import java.util.Objects;
 
 public class LPExcavator extends JavaPlugin implements Listener {
 
@@ -35,6 +38,9 @@ public class LPExcavator extends JavaPlugin implements Listener {
             playerStates.setPlayerAxeMode(player, AxeExcavatorMode.Disabled);
             playerStates.setPlayerPickaxeMode(player, PickaxeExcavatorMode.Disabled);
         }
+
+        // register command handlers
+        Objects.requireNonNull(getCommand("excavator")).setExecutor(new ExcavatorCommand());
     }
 
     public ExcavatorPlayerStates getPlayerStates() {
